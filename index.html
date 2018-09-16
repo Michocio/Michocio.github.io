@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 
@@ -157,7 +158,14 @@ W przeciwieństwie do rozpowszechnionych opinii, Lorem Ipsum nie jest tylko przy
 </div>
 <br><br>
 
-
+<div id="tester" style="width:600px;height:250px;"></div>
+<script>
+	TESTER = document.getElementById('tester');
+	Plotly.plot( TESTER, [{
+	x: [1, 2, 3, 4, 5],
+	y: [1, 2, 4, 8, 16] }], {
+	margin: { t: 0 } }, );
+</script>
 
 <center><img src="tw.png" width="50px" height="50px"></img></center>
 <hr>
