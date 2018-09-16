@@ -1,5 +1,19 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
+
+<style>
+body {
+background-color:#fbfbfb;
+}
 .full-circle {
 opacity: 0.7;
  position: absolute;
@@ -59,43 +73,32 @@ top: 18px;left: 32px;
     -moz-border-radius: 150px 0 0 0;
     border-radius: 150px 0 0 0;
 }
+
 </style>
 
-
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).mouseover(function(){
-    $(".full-circle").hover(function(){
-        $("#id2").show();
-    });
-$(".full-circle").mouseleave(function(){
-        $("#id2").hide();
-    });
-});
-</script>
-</head>
-
-<div style="position: relative;">
-<img src="map.jpg" width="450px" height="300px"></img>
-<p class="full-circle" style="top: 150px;left: 24px;"></p>
-<div id="id2"class="box"></div>
-<p class="full-circle" style="top: 18px;left: 32px;"></p>
-<div id ="id1" class="box"></div>
-</div>
-
-<div  style="position: relative;">
-<img src="map.jpg" width="450px" height="300px"></img>
-<p class="full-circle" style="top: 150px;left: 24px;"></p>
-<div id="id2"class="box"></div>
-<p class="full-circle" style="top: 18px;left: 32px;"></p>
-<div id ="id1" class="box"></div>
-</div>
+<body>
 
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-left" href="#"><img src="logo.png"></img></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
+<li class="active"><a href="#">Blog</a></li>
+      <li><a href="#">xG - wyjaśnienie</a></li>
+      <li><a href="#">Mecze</a></li>
+<li><a href="#">Drużyny</a></li>
+      <li><a href="#">Indywidualne</a></li>
+      <li><a href="#">O mnie</a></li>
+      <li><a href="#">Kontakt</a></li>
+
+    </ul>
+  </div>
+</nav>
 
 
-
+</body>
 
 
 
