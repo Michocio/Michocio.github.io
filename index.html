@@ -1,0 +1,106 @@
+<style>
+
+.full-circle {
+opacity: 0.7;
+ position: absolute;
+    background-color:red;
+    height:30px;
+    width:30px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.box {
+opacity: 0.7;
+background-color: yellow;
+    height:130px;
+    width:130px;
+position: absolute;
+ display: none;
+top: 18px;left: 32px;
+
+}
+
+.full-circle:hover { 
+    background-color: yellow;
+    cursor:pointer;
+}
+
+.circle-border {
+    background-color:#c06;
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.transparent-circle {
+    background-color: rgba(204, 0, 102, 40);
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.half-circle {
+    background-color:#c06;
+    height:150px;
+    width: 75px;
+    -moz-border-radius: 150px 0 0 150px;
+    border-radius: 150px 0 0 150px;
+}
+
+.quarter-circle {
+    background-color:#c06;
+    height:150px;
+    width: 150px;
+    -moz-border-radius: 150px 0 0 0;
+    border-radius: 150px 0 0 0;
+}
+</style>
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).mouseover(function(){
+    $(".full-circle").hover(function(){
+        $("#id2").show();
+    });
+$(".full-circle").mouseleave(function(){
+        $("#id2").hide();
+    });
+});
+</script>
+</head>
+
+<div style="position: relative;">
+<img src="map.jpg" width="450px" height="300px"></img>
+<p class="full-circle" style="top: 150px;left: 24px;"></p>
+<div id="id2"class="box"></div>
+<p class="full-circle" style="top: 18px;left: 32px;"></p>
+<div id ="id1" class="box"></div>
+</div>
+
+<div  style="position: relative;">
+<img src="map.jpg" width="450px" height="300px"></img>
+<p class="full-circle" style="top: 150px;left: 24px;"></p>
+<div id="id2"class="box"></div>
+<p class="full-circle" style="top: 18px;left: 32px;"></p>
+<div id ="id1" class="box"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
