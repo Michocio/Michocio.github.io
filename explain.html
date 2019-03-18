@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+
+<style>
+
+li {
+    font-size:1.2em;
+}
+blockquote {
+  background:#dfe6e9;
+  border-left:10px solid #ccc;
+  margin:1.5em 10px;
+  padding:.5em 10px;
+  quotes:"\201C""\201D""\2018""\2019";
+  border-left: 10px solid #0984e3;
+}
+blockquote:before {
+  color:#0984e3;
+  content:open-quote;
+  font-size:4em;
+  line-height:.1em;
+  margin-right:.25em;
+  vertical-align:-.4em;
+}
+blockquote p {
+  display:inline;
+}
+
+
+@media screen and (min-width: 650px) {
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+#block{
+border:0;
+margin: auto;
+width: 80%;
+padding: 10px;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
+}
+.bins {
+    width:100%;
+    height: 450px;
+}
+}
+@media screen and (max-width: 649px) {
+    #block{
+border:0;
+margin: auto;
+width: 100%;
+padding: 10px;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
+}
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 44px; font-weight: 700; line-height: 54px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+
+.bins {
+    width:100%;
+    height: 450px;
+}
+}
+@media screen and (max-width: 440px) {
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 30px; font-weight: 700; line-height: 24px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+
+
+}
+h2 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 28px; font-weight: 700; line-height: 48px; margin: 0 0 24px;text-align:left; text-transform: uppercase; }
+
+
+p { color: #111; font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 28px; margin: 0 0 48px; }
+
+
+a { color: #990000; text-decoration: none; }
+
+
+a:hover { text-decoration: underline }
+
+
+.date { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; position: relative; text-align: center; z-index: 1; }
+
+
+.date:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
+
+
+.author { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; padding-bottom: 38px; position: relative; text-align: center; z-index: 1; }
+
+
+.author:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
+
+
+.date span,
+
+.author span { background: #fdfdfd; padding: 0 10px; text-transform: uppercase; }
+
+
+.line { border-top: 1px solid #111; display: block; margin-top: 60px; padding-top: 50px; position: relative; }
+
+
+.read-more { -moz-border-radius: 50%; -moz-transition: all 0.2s ease-in-out; -webkit-border-radius: 50%; -webkit-transition: all 0.2s ease-in-out; background: #111; border-radius: 50%; border: 10px solid #fdfdfd; color: #fff; display: block; font-family: 'Open Sans', sans-serif; font-size: 14px; height: 80px; line-height: 80px; margin: -40px 0 0 -40px; position: absolute; bottom: 0px; left: 50%; text-align: center; text-transform: uppercase; width: 80px; }
+
+
+.read-more:hover { background: #990000; text-decoration: none; }
+body {
+background-color:#fbfbfb;
+}
+.full-circle {
+opacity: 0.7;
+ position: absolute;
+    background-color:red;
+    height:30px;
+    width:30px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.box {
+opacity: 0.7;
+background-color: yellow;
+    height:130px;
+    width:130px;
+position: absolute;
+ display: none;
+top: 18px;left: 32px;
+
+}
+
+.full-circle:hover { 
+    background-color: yellow;
+    cursor:pointer;
+}
+
+.circle-border {
+    background-color:#c06;
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.transparent-circle {
+    background-color: rgba(204, 0, 102, 40);
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.half-circle {
+    background-color:#c06;
+    height:150px;
+    width: 75px;
+    -moz-border-radius: 150px 0 0 150px;
+    border-radius: 150px 0 0 150px;
+}
+
+.quarter-circle {
+    background-color:#c06;
+    height:150px;
+    width: 150px;
+    -moz-border-radius: 150px 0 0 0;
+    border-radius: 150px 0 0 0;
+}
+article::first-letter {
+    font-size: 500%;
+    color:#0984e3;
+}
+
+
+.navbar-default {
+border:0;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
+border-bottom-color:black;
+}
+#wpis {
+border:1px;
+padding:50px 15px 15px 15px;
+}
+
+.shot {
+opacity: 0.7;
+ position: absolute;
+    background-color:red;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.goal {
+opacity: 0.7;
+ position: absolute;
+    background-color:blue;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+.highlight{
+background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+</style>
+
+<body>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=602628593213678&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="block">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-left" href="#"><img src="logo.png"></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
+                <li><a href="#">Blog</a></li>
+                <li class="active"><a href="index.html"><b>xG</b> - wyjaśnienie</a></li>
+                <li><a href="matches.html">Mecze</a></li>
+                <li><a href="#">Drużyny</a></li>
+                <li><a href="#">Indywidualne</a></li>
+                <li><a href="#">O mnie</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div id = "wpis">
+
+    <header><h1><b>Expected goals / wyjaśnienie</b></h1></header>
+    <header><h5><i>September 14, 2018</h5></i></header>
+    <header style="padding-bottom:30px;"><h5><i><u>@Michocio</h5></u></i></header>
+    <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Too long; didn't read</h4>
+            <p><h3 style="color:black;">Expected Goals(xG)</h3>
+            <hr>
+            <p class="mb-0">               Rodzaj statystyki (metryki) szacujący prawdopodobieństwo zdobycia
+                 gola po strzale z danej pozycji.
+                    Miara jakości akcji, której zwieńczeniem jest dany strzał. 
+                    Suma <b>xG</b> wszystkich strzałów to "oczekiwana" liczba
+                    goli jakie drużyna powinna zdobyć oddająć strzały w danych sytuacjach. Przy szacowaniu <b>xG</b>,
+                    modele biorą pod uwagę wiele różnych czynników, m.in. skąd został oddany strzał, 
+                    rodzaj podania poprzedzający uderzenie,
+                    czy strzał padł po dobitce...</p>
+          </div>
+    <article>
+            <p>Ile razy, oglądając mecz, krzyknęliśmy - <i>“z tej pozycji sam bym strzelił”</i>
+                albo <i>“to niemożliwe, że tracimy gola w takiej sytuacji”</i>.
+                Niezliczoną ilość razy słyszeliśmy, że końcowy wynik nie odzwierciedla przebiegu gry.
+                Piłka nożna jest pełna subiektywnych opinii. 
+                Ciężko jest znaleźć inny sport zespołowy, w którym wynik końcowy, w tak małym stopniu odzwierciedla, 
+                faktyczną różnicę w poziomie zespołów. 
+                Jako, że jest to dosyć subiektywne stwierdzenie, można się z nim nie zgodzić,
+                jednak bezsprzecznym faktem jest to że piłka nożna to sport z relatywnie małą liczbą 
+                akcji oraz, co za tym idzie, małą liczbą punktów = goli. 
+                Weźmy na przykład siatkówkę - mecz toczy się  <i>”akcja za akcję”</i>, 
+                podobnie w koszykówce. 
+                Futbol to - nie mogąc znaleźć lepszego określenia w języku polskim - 
+                <span style="background-color: #0be881"><i><b>“low scoring game”</i></b></span>.
+                Co więcej piłka to nie tylko <i>“low scoring game”</i>, uzasadnione wydaje się również określenie - 
+                <span style="background-color: #0be881"><b><i>“small margin game”</i></b></span> - bardzo często faworyci nie wygrywają w stosunku odpowiadającym faktycznej 
+                dysproporcji sił. W futbolu, szczególnie w krótkim okresie bardzo łatwo o niespodziankę. 
+                W długim okresie lepsze drużyny osiągają lepsze wyniki, jednak, powtórzę się,
+                    wynik pojedynczego, lub nawet kilku meczów, bardzo często bywa mylący i niesprawiedliwy.
+                    Dlatego do lepszego zrozumienia piłki nożnej potrzebujemy lepszych miar niż liczba goli,
+                    liczba strzałów, czy też procent posiadania piłki. Jedną z powszechnie używanych statystyk 
+                    jest właśnie <span style="background-color: #f1c40f"><b><i>expected goals</i></b></span> (<b>xG</b>). Choć <b>xG</b> nie jest podejściem nowym, szczególnie w ostatnich 
+                    latach zdobyło dużą popularność. 
+            </p>
+            <h2>Podstawy</h2>
+            <p>
+            Wyobraźmy sobie, że wynikiem meczu przestają być gole. Zamiast traktować jako wynik liczbę razy,
+             kiedy piłka przekroczy całym obwodem linię bramkową, jako wynik uznajmy sumę jakości akcji danej drużyny.
+             <span style="background-color: #fc5c65"> <b>xG</b> to właśnie suma jakości wszystkich akcji</span>, 
+                lub mówiąc inaczej - 
+              sumaryczna ocena działań pod bramką przeciwnika. Wynik meczu przestaje więc 
+              być dwoma liczbami całkowitymi, może teraz wyglądać tak: <b>1.64 : 0.85</b>. 
+              Dla lepszego zrozumienia, możemy sobie wyobrazić, że <b>xG</b> to ocena za styl, 
+              miara tego jak wiele i jak groźnych sytuacji stworzyła drużyna. 
+              </p>
+            <p>
+            Czym właściwie jest jakość akcji? 
+            Musimy znaleźć obiektywny sposób oceny danej sytuacji, tak, żeby ponownie 
+            nie wpaść w pułapkę subiektywizmu. 
+            Najprostsze podejście do obliczania <b>xG</b> zakłada, 
+            określenie jakie jest prawdopodobieństwo (liczba z przedziału <b>[0,1]</b>), 
+            zdobycia gola po strzale z danej pozycji (boiskowe współrzędne <b>x,y</b>) 
+            w zależności czy strzał jest oddawany nogą (stopa? :) ) czy głową. 
+            <span style="background-color: #fc5c65">Logiczne jest założenie,
+                 że czym bliżej bramki i czym większy kąt między strzelającym 
+                 i bramką, tym większa szansa na zdobycie gola</span>,
+                  a tym samym zwieńczenie danej sytuacji zasługuje na lepszą ocenę. 
+                </p>
+                  <p>
+                  Wyznaczając prawdopodobieństwo zdobycia gola możemy pójść krok dalej w
+                   uproszczeniu naszego modelu, dzieląc boisko na strefy, będące prostokątami. 
+                   Przykładowo tak jak na poniższej ilustracji. Właściwie powinno podzielić się pole karne, 
+                   na mniejsze obszary pobliżu bramki. 
+                   W końcu prawdopodobieństwo zdobycia gola, nie zmienia się liniowo. 
+                   Jednak przedstawiony podział wydaje się wystarczający dla potrzeb poglądowych.
+            Teraz wystarczy zgromadzić bardzo dużo danych, 
+            najlepiej tysiące strzałów i na 
+            podstawie tych historycznych danych wyznaczyć 
+            prawdopodobieństwo zdobycia gola przy strzale z danej strefy. 
+            <span style="background-color: #f1c40f">Jeżeli z danej strefy oddano 1000 strzałów z czego 
+                250 znalazło drogę do siatki, to podobieństwo wynosi 0.25. </span>
+            
+            </p>
+            <p>
+            Zgromadziłem i przeanalizowałem dane z <b>3207 meczów</b> z udziałem drużyn, 
+            które w ciągu ostatnich <b>4 sezonów</b> zagrały w Ekstraklasie. 
+            <span style="background-color: #0be881">Daje to 81783 strzałów, z czego 8406 znalazło drogę do siatki.</span>
+            <b>Zatem gol pada średnio raz na 10 strzałów.</b>
+             Poniższa ilustracja pokazuje obliczone prawdopodobieństwa 
+             (w obszarach bez prawd. pada zbyt mało strzałów, żeby obiektywnie określić prawd.).
+            </p>
+            <center><img src="ok.png" class ="bins"><p><cite>Prawdopobieństwo zdobycia gola po strzale stopą</cite></p>
+            </center>
+            <h2 style='float:"left"'>Lepsze podejście</h2><p>
+            <p>
+            Powyżej opisany model jest jednak dosyć naiwny. 
+            Oczywiste wydaje się, że dwa strzały z tej samej pozycji mogę być efektem akcji o
+             zupełnie innym przebiegu. Strzał z 11 metrów, kiedy ma się przed sobą zaparkowany autobus,
+              złożony z graczy przeciwnika, nie może równać się strzałowi sam na sam z bramkarzem,
+               który wieńczy piękne prostopadłe podanie. Dlatego powyższe prawdopodobieństwa, 
+               choć niewątpliwie pouczające oraz kuszące swoją prostotą, nie są najlepszym podejściem do obliczania
+                <b>xG</b>. Na swoim blogu prezentuję udoskonalone podejście, uwzględniające inne czynniki,
+                 które mają wpływ na szansę zdobycia gola. 
+            
+            Podczas gdy w pierwszym modelu faktycznie zebrałem dane na temat strzałów, 
+            tym razem <span style="background-color: #fc5c65"> będę bazował na sprawdzonym modelu, 
+                stworzonym przez <b>Michaela Caleya </b></span>- 
+                (<a href="https://bit.ly/2Q1jz9N">https://bit.ly/2Q1jz9N</a>)
+                Caley zaproponował model, który przy estymacji prawdopodobieństwa bierze pod uwagę m.in takie czynniki jak:
+            </p>
+            <div class="alert alert-warning" role="alert">
+                <p>
+                    <ul>
+                            <li>czy strzał padł bezpośrednio po dośrodkowaniu</li>
+                            <li>czy strzał padł po prostopadłym podaniu</li>
+                            <li>czy strzał padł z rzutu wolnego</li>
+                            <li>czy napastnik przedryblował bramkarza</li>
+                            <li>strzał po dobitce
+                                </ul>
+                            </p>
+                  </div>
+
+            <p style="margin: 0;">
+            Dlaczego ma to sens? Pozwolę sobie zacytować Caley: 
+        <blockquote>
+            <i>It's not surprising that through-balls would create high-quality chances.
+                 Opta defines a through-ball as "a pass splitting the defence for a team-mate to run on to."
+                  So a shot off a through-ball should be shot under very little defensive pressure. 
+                  The defenders have, by definition, been split and the attacking player has run beyond them.
+                </i><footer>- Michael Caley - <i>Shot Matrix III: The Incredible Through-Ball</i></footer></blockquote><p>
+                Zatem uwzględnienie dodatkowych “ficzerów” pozwala lepiej oszacować jakość akcji. 
+                Jednak co najważniejsze model Calyea uwzględnia tzw. <b>“Big Chance”</b>, 
+                czyli strzały przy których łapiemy się za głowę, krzycząc “musi to strzelić”. 
+                <b>“Big Chance”</b> 
+                to sytuacja, w której wydaje nam się niemal pewne,
+                 że napastnik musi zdobyć gola
+                  (wg. niektórych źródeł to akcja z prawdopodobieństwem 
+                  na zdobycie gola większym niż <b>60%</b>). To właśnie ta cecha pozwala odróżnić niegroźne strzały, od spektakularnych sytuacji z tej samej pozycji (np. sam na sam z bramkarzem, pusta bramka itp). Uwzględnienie powyższych “atrybutów”, pozwala uzyskać lepszą dokładność modelu, a tym samym uzyskać lepsze miary poziomu drużyny w meczu.
+        </p>
+            <h2 style='float:"left"'>Zastosowanie</h2><p>
+            <b>xG</b> możemy użyć do oceny faktycznej formy drużyny. 
+            <span style="background-color: #fc5c65">Wynik rozumiany jako liczba goli bywa mylący</span>, 
+            nie uwzględnia braku szczęścia przy strzale (np. poprzeczka), 
+            czy też nadzwyczaj dobrej postawy bramkarza. 
+            Jeżeli w danym meczu bramkarz broni w niemożliwych sytuacjach
+             czy faktycznie możemy powiedzieć, 
+             że drużyna ostrzeliwująca jego bramkę zagrała słabo,
+              nie wygrywając ostatecznie meczu? Czy drużyna przeważająca
+               przez cały mecz, oddająca dwa strzały w poprzeczkę, 
+               przegrywająca jednym golem, po przypadkowej bramce, 
+               faktycznie zasługuje na gorszą ocenę? <b>xG</b> 
+               daje nam lepszy obraz faktycznego przebiegu meczu. 
+               <span style="background-color: #0be881">W krótkim okresie na wyniki duży wpływ ma przypadek 
+               lub może lepiej napisać fart/pech.</span> W długim okresie 
+               rozsądnym wydaje się założenie, że bilans szczęście/pecha wychodzi na
+                zero i wyniki oparte na golach faktycznie dają obraz która
+                 drużyna jest faktycznie najlepsza, tak w krótkim okresie <b>xG</b>
+                  mogą dać lepszy obraz faktycznej dyspozycji. Z drugiej strony, 
+                  nawet w długim okresie <b>xG</b> mogą prowadzić do bardziej 
+                  uzasadnionych wniosków niż gole. Wyobraźmy sobie, że o mistrzostwie 
+                  zadecyduje 1 pkt zdobyty w meczu gdzie mistrz obronił remis dosyć 
+                  przypadkowo. Tabela oparta na <b>xG</b> może wyłonić innego mistrza, 
+                  wydać “wyrok”, który wydaje się być bardziej sprawiedliwym.</p>
+                  <p>
+                    Oczywiście <b>xG</b> można również użyć do
+                 induwidulanej oceny zawodników. Jednak, tutaj należy pamiętać, że
+                 jeżeli zawodnik strzela o wiele więcej goli niż wskazuje na to <b>xG</b> nie oznacza
+                 to automatycznie, że jego umiejętności są na tyle wybitne, że strzela w niemożliwych sytuacjach.
+                 Oczywiście jeżeli taki trend dla zawodnika utrzymuje się przez długi czas, możemy w <b>xG</b> znaleźć
+                 potwierdzenie ysokich umiejętnośći wykańczania akcji, jednak w krótkim okresie musimy uważać z wyciąganiem takich
+                 wniosków.
+        </p>
+
+        <h2 style='float:"left"'>Podsumowanie</h2><p>
+            <p>
+            Pomimo wielu zalet oraz mnogości swoich zastosowań, <b>xG</b> daleko do określenia Święty Graal statystyki. Nawet uwzględniając jeszcze więcej szegółów przy obliczaniu prawdopodobieństwa danego strzału, ciągle uzyskujemy tylko w jakimś stopniu uśrednione wartości. Model nie uwzględnia indywidualnych atrybutów strzelca oraz bramkarza. Co więcej czy możemy stwierdzić, że <b>xG</b> faktycznie lepiej wskazuje lepszą drużynę? Często mówi się, że zwycięzców się nie sądzi, cel uświęca środki itp. Dlatego chociaż <b>xG</b> to pouczająca metryka, ciągle z tyłu głowy musimy mieć myśl, że jak każda statystyka nie jest rozwiązaniem idealnym.
+        </p>
+    <center><img src="tw.png" width="50px" height="50px"></center>
+    <hr>
+    </article>
+
+</div>
+
+
+<div class="fb-comments" data-href="https://michocio.github.io/" data-numposts="5" style="display: table;margin: 0 auto;">
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+

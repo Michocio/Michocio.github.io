@@ -12,6 +12,103 @@
 
 
 <style>
+
+li {
+    font-size:1.2em;
+}
+blockquote {
+  background:#dfe6e9;
+  border-left:10px solid #ccc;
+  margin:1.5em 10px;
+  padding:.5em 10px;
+  quotes:"\201C""\201D""\2018""\2019";
+  border-left: 10px solid #0984e3;
+}
+blockquote:before {
+  color:#0984e3;
+  content:open-quote;
+  font-size:4em;
+  line-height:.1em;
+  margin-right:.25em;
+  vertical-align:-.4em;
+}
+blockquote p {
+  display:inline;
+}
+
+
+@media screen and (min-width: 650px) {
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+#block{
+border:0;
+margin: auto;
+width: 80%;
+padding: 10px;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
+}
+.bins {
+    width:100%;
+    height: 450px;
+}
+}
+@media screen and (max-width: 649px) {
+    #block{
+border:0;
+margin: auto;
+width: 100%;
+padding: 10px;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
+}
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 44px; font-weight: 700; line-height: 54px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+
+.bins {
+    width:100%;
+    height: 450px;
+}
+}
+@media screen and (max-width: 440px) {
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 30px; font-weight: 700; line-height: 24px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
+
+
+}
+h2 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 28px; font-weight: 700; line-height: 48px; margin: 0 0 24px;text-align:left; text-transform: uppercase; }
+
+
+p { color: #111; font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 28px; margin: 0 0 48px; }
+
+
+a { color: #990000; text-decoration: none; }
+
+
+a:hover { text-decoration: underline }
+
+
+.date { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; position: relative; text-align: center; z-index: 1; }
+
+
+.date:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
+
+
+.author { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; padding-bottom: 38px; position: relative; text-align: center; z-index: 1; }
+
+
+.author:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
+
+
+.date span,
+
+.author span { background: #fdfdfd; padding: 0 10px; text-transform: uppercase; }
+
+
+.line { border-top: 1px solid #111; display: block; margin-top: 60px; padding-top: 50px; position: relative; }
+
+
+.read-more { -moz-border-radius: 50%; -moz-transition: all 0.2s ease-in-out; -webkit-border-radius: 50%; -webkit-transition: all 0.2s ease-in-out; background: #111; border-radius: 50%; border: 10px solid #fdfdfd; color: #fff; display: block; font-family: 'Open Sans', sans-serif; font-size: 14px; height: 80px; line-height: 80px; margin: -40px 0 0 -40px; position: absolute; bottom: 0px; left: 50%; text-align: center; text-transform: uppercase; width: 80px; }
+
+
+.read-more:hover { background: #990000; text-decoration: none; }
 body {
 background-color:#fbfbfb;
 }
@@ -74,14 +171,12 @@ top: 18px;left: 32px;
     -moz-border-radius: 150px 0 0 0;
     border-radius: 150px 0 0 0;
 }
-#row{
-border:0;
-margin: auto;
-    width: 80%;
-    padding: 10px;
-background-color: #fbfbfb;
-border-color: #fbfbfb;
+article::first-letter {
+    font-size: 500%;
+    color:#0984e3;
 }
+
+
 .navbar-default {
 border:0;
 background-color: #fbfbfb;
@@ -90,7 +185,7 @@ border-bottom-color:black;
 }
 #wpis {
 border:1px;
-padding:50px 25px 25px 25px;
+padding:50px 15px 15px 15px;
 }
 
 .shot {
@@ -108,55 +203,65 @@ opacity: 0.7;
     -webkit-border-radius:75px;
     -moz-border-radius:75px;
 }
+.highlight{
+background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 </style>
 
 <body>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=602628593213678&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div id="row">
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-left" href="#"><img src="logo.png"></img></a>
-    </div>
-    <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
-<li class="active"><a href="#">Blog</a></li>
-      <li><a href="index.html">xG - wyjaśnienie</a></li>
-      <li><a href="matches.html">Mecze</a></li>
-<li><a href="#">Drużyny</a></li>
-      <li><a href="#">Indywidualne</a></li>
-      <li><a href="#">O mnie</a></li>
-      <li><a href="#">Kontakt</a></li>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=602628593213678&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
-    </ul>
-  </div>
-</nav>
-<div id = "wpis">
-<header ><h1><b>Nagłówek</b></h1></header>
-<header><h5><i>September 14, 2018</h5></i></header>
-<header style="padding-bottom:30px;"><h5><i><u>@Michocio</h5></u></i></header>
-<article>
-Do czego tego użyć?
-Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu i wpisanie w internetowej wyszukiwarce ‘lorem ipsum’ spowoduje znalezienie bardzo wielu stron, które wciąż są w budowie. Wiele wersji tekstu ewoluowało i zmieniało się przez lata, czasem przez przypadek, czasem specjalnie (humorystyczne wstawki itd).
+<div id="block">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-left" href="#"><img src="logo.png"></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
+                <li><a href="explain.html">Blog</a></li>
+                <li class="active"><a href="index.html"><b>xG</b> - wyjaśnienie</a></li>
+                <li><a href="matches.html">Mecze</a></li>
+                <li><a href="#">Drużyny</a></li>
+                <li><a href="#">Indywidualne</a></li>
+                <li><a href="#">O mnie</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
-Skąd się to wzięło?
-W przeciwieństwie do rozpowszechnionych opinii, Lorem Ipsum nie jest tylko przypadkowym tekstem. Ma ono korzenie w klasycznej łacińskiej literaturze z 45 roku przed Chrystusem, czyli ponad 2000 lat temu! Richard McClintock, wykładowca łaciny na uniwersytecie Hampden-Sydney w Virginii, przyjrzał się uważniej jednemu z najbardziej niejasnych słów w Lorem Ipsum – consectetur – i po wielu poszukiwaniach odnalazł niezaprzeczalne źródło: Lorem Ipsum pochodzi z fragmentów (1.10.32 i 1.10.33) „de Finibus Bonorum et Malorum”, czyli „O granicy dobra i zła”, napisanej właśnie w 45 p.n.e. przez Cycerona. Jest to bardzo popularna w czasach renesansu rozprawa na temat etyki. Pierwszy wiersz Lorem Ipsum, „Lorem ipsum dolor sit amet...” pochodzi właśnie z sekcji 1.10.32.
+
+    <div id = "wpis">
+
+    <header><h1><b>Legia Warszawa - Śląsk Wrocałw/b></h1></header>
+    <header><h5><i>March 18, 2019</h5></i></header>
+    <header style="padding-bottom:30px;"><h5><i><u>@Michocio</h5></u></i></header>
 
 
-<center><img src="tw.png" width="50px" height="50px"></img></center>
-<hr>
-</article>
+
+
+    <center><img src="tw.png" width="50px" height="50px"></center>
+    <hr>
+    </article>
+
 </div>
-<div class="fb-comments" data-href="https://michocio.github.io/" data-numposts="5" style="display: table;
-  margin: 0 auto;"></div>
+
+
+<div class="fb-comments" data-href="https://michocio.github.io/" data-numposts="5" style="display: table;margin: 0 auto;">
+</div>
 </div>
 </body>
 
