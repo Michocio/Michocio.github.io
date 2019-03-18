@@ -7,108 +7,270 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+        function Shoot(name, type, time, val) {
+        this[".name"] = name;
+        if (type.length==0)
+            type="saved";
+        this[".type"] = type;
+        var minutes = Math.floor(time / 60);
+    var seconds = time - minutes * 60;
+    if (seconds < 10)
+        seconds="0"+seconds
+    
+    if (minutes < 10)
+        minutes="0"+minutes
+        this[".time"] = minutes + ":" + seconds;
+        this[".val"] = val.toFixed(4);;
+    
+    };
+    
+    var example = new Shoot('Flavio Paixao', 'shots_wide', 731, 0.42599616241029475);
+    var tab = {};
+    tab['#s0'] = new Shoot('M. Vesovic', '', 1559, 0.055781832650463714);
+tab['#s1'] = new Shoot('Andre Martins', 'shots_wide', 1702, 0.043755733356441395);
+tab['#s2'] = new Shoot('M. Kucharczyk', '', 1954, 0.15374487857901967);
+tab['#s3'] = new Shoot('Cafu', '', 1975, 0.040936528212592055);
+tab['#s4'] = new Shoot('Cafu', 'shots_blocked', 2775, 0.04270792623960604);
+tab['#s5'] = new Shoot('P. Celeban', 'shots_blocked', 2828, 0.12060935581691275);
+tab['#s6'] = new Shoot('Cafu', 'shots_wide', 2934, 0.24837764132024265);
+tab['#s7'] = new Shoot('Carlos Lopez', 'goals', 3176, 0.75);
+tab['#s8'] = new Shoot('I. Tarasovs', 'interceptions_save_shots', 3570, 0.25526016551766356);
+tab['#s9'] = new Shoot('M. Robak', '', 3930, 0.1594949345512698);
+tab['#s10'] = new Shoot('K. Mączyński', '', 4367, 0.013751044697975801);
+tab['#s11'] = new Shoot('D. Gaska', '', 4456, 0.03961980046848646);
+tab['#s12'] = new Shoot('S. Kulenovic', 'shots_blocked', 4928, 0.054152871100033105);
+tab['#s13'] = new Shoot('D. Nagy', 'shots_wide', 4930, 0.06230393902453829);
+tab['#s14'] = new Shoot('D. Gaska', 'shots_wide', 5064, 0.04174975053476916);
+tab['#s15'] = new Shoot('L. Musonda', 'shots_wide', 5278, 0.06451013020840554);
+tab['#s16'] = new Shoot('A. Piech', 'shots_wide', 5922, 0.10029048332655383);
+tab['#s17'] = new Shoot('M. Robak', 'shots_wide', 6029, 0.06020952572894166);
+tab['#s18'] = new Shoot('S. Kulenovic', 'shots_blocked', 6159, 0.028612364622894897);
+    
+    function changeVals(what) {
+        console.log('#'+"'"+what.id+"'");
+        var test = tab ['#'+""+what.id+""];
+        console.log(test);
+        for (var key in test) {
+            if (test.hasOwnProperty(key)) {
+                $(key).html(test[key]); 
+            }
+        }
+    };
+    
+    $( document ).ready(function() {
+        $('.shot').hover(function() {changeVals(this)});
+        $('.goal').hover(function() {changeVals(this)});
+        console.log( "ready!" );
+        //for (p in tab) {
+        //$(p).hover(function() {changeVals(p)});
+    //}
+    });
+    </script>
+    
 </head>
 
 
 <style>
-
-li {
-    font-size:1.2em;
-}
-blockquote {
-  background:#dfe6e9;
-  border-left:10px solid #ccc;
-  margin:1.5em 10px;
-  padding:.5em 10px;
-  quotes:"\201C""\201D""\2018""\2019";
-  border-left: 10px solid #0984e3;
-}
-blockquote:before {
-  color:#0984e3;
-  content:open-quote;
-  font-size:4em;
-  line-height:.1em;
-  margin-right:.25em;
-  vertical-align:-.4em;
-}
-blockquote p {
-  display:inline;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 
-@media screen and (min-width: 650px) {
-h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
-#block{
-border:0;
-margin: auto;
-width: 80%;
-padding: 10px;
-background-color: #fbfbfb;
-border-color: #fbfbfb;
+.full-circle {
+opacity: 0.7;
+ position: absolute;
+    background-color:red;
+    height:30px;
+    width:30px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
 }
-.bins {
-    width:100%;
-    height: 450px;
-}
-}
-@media screen and (max-width: 649px) {
-    #block{
-border:0;
-margin: auto;
-width: 100%;
-padding: 10px;
-background-color: #fbfbfb;
-border-color: #fbfbfb;
-}
-h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 44px; font-weight: 700; line-height: 54px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
 
-.bins {
-    width:100%;
-    height: 450px;
-}
-}
-@media screen and (max-width: 440px) {
-h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 30px; font-weight: 700; line-height: 24px; margin: 0 0 0; text-align: left; text-transform: uppercase; }
-
+.box {
+opacity: 0.7;
+background-color: yellow;
+    height:130px;
+    width:130px;
+position: absolute;
+ display: none;
+top: 18px;left: 32px;
 
 }
-h2 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 28px; font-weight: 700; line-height: 48px; margin: 0 0 24px;text-align:left; text-transform: uppercase; }
+
+.full-circle:hover { 
+    background-color: yellow;
+    cursor:pointer;
+}
+
+.circle-border {
+    background-color:#c06;
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.transparent-circle {
+    background-color: rgba(204, 0, 102, 40);
+    border: 3px solid #000;
+    height:150px;
+    width:150px;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
+
+.half-circle {
+    background-color:#c06;
+    height:150px;
+    width: 75px;
+    -moz-border-radius: 150px 0 0 150px;
+    border-radius: 150px 0 0 150px;
+}
+
+.quarter-circle {
+    background-color:#c06;
+    height:150px;
+    width: 150px;
+    -moz-border-radius: 150px 0 0 0;
+    border-radius: 150px 0 0 0;
+}
+.shot {
+    cursor: pointer;
+opacity: 0.7;
+ position: absolute;
+    background-color:red;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+    margin: 0;
+}
+
+.goal {
+    margin: 0;
+    cursor: pointer;
+opacity: 0.7;
+ position: absolute;
+    background-color:blue;
+    -webkit-border-radius:75px;
+    -moz-border-radius:75px;
+}
 
 
-p { color: #111; font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 28px; margin: 0 0 48px; }
+.xa{
+    min-height:450px;
+    min-width:300px;    
+}
+
+@media all
+ and (max-width: 3400px) 
+{ 
+    #div1{
+  float: left;
+  position: relative;
+}
+#div1x{
+  float: left;
+  position: relative;
+  visibility:  hidden;
+  display: none;
+}
+    #div2{
+    height: 60px;
+    width: 100px;
+    border: solid 1px #000000;
+    background-color: #66CC00;
+    float: left;
+    visibility:  visible;
+    }
+
+    #div2i{
+    border: solid 1px #000000;
+    background-color: #66CC00;
+    float: left;
+    visibility:  hidden;
+    display: none;
+    }
+    #div3{
+    display: block;
+    height: 40px;
+  width: 100%;
+  border: solid 1px #000000;
+  background-color: #66CC00;
+  text-align: center;
+  font-size: 1em;
+}
+}
+
+@media all
+ and (max-width: 950px) 
+{ 
+    #div1{
+  visibility:  hidden;
+  display:none;
+}
+#div1x{
+  float: left;
+  position: relative;
+  visibility:  visible;
+  display: inherit;
+}
+    #div2{
+    height: 40px;
+    display:none;
+    border: solid 1px #000000;
+    background-color: #66CC00;
+    float: left;
+    visibility:  hidden;
+    }
 
 
-a { color: #990000; text-decoration: none; }
+
+        #div2i{
+    height: 40px;
+    display: inherit;
+    border: solid 1px #000000;
+    background-color: #66CC00;
+    clear: both;
+    visibility:  visible;
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+    #div3{
+        float:left;
+        text-align: center;
+        font-size: 0.9em;
+    
+
+}
+}
+.rotate90 {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);
+}
 
 
-a:hover { text-decoration: underline }
 
 
-.date { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; position: relative; text-align: center; z-index: 1; }
 
 
-.date:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
 
 
-.author { color: #111; display: block; font-family: 'Open Sans', sans-serif; font-size: 16px; padding-bottom: 38px; position: relative; text-align: center; z-index: 1; }
 
 
-.author:before { border-top: 1px solid #111; content: ""; position: absolute; top: 12px; left: 0; width: 100%; z-index: -1; }
 
 
-.date span,
-
-.author span { background: #fdfdfd; padding: 0 10px; text-transform: uppercase; }
 
 
-.line { border-top: 1px solid #111; display: block; margin-top: 60px; padding-top: 50px; position: relative; }
 
 
-.read-more { -moz-border-radius: 50%; -moz-transition: all 0.2s ease-in-out; -webkit-border-radius: 50%; -webkit-transition: all 0.2s ease-in-out; background: #111; border-radius: 50%; border: 10px solid #fdfdfd; color: #fff; display: block; font-family: 'Open Sans', sans-serif; font-size: 14px; height: 80px; line-height: 80px; margin: -40px 0 0 -40px; position: absolute; bottom: 0px; left: 50%; text-align: center; text-transform: uppercase; width: 80px; }
 
 
-.read-more:hover { background: #990000; text-decoration: none; }
+
 body {
 background-color:#fbfbfb;
 }
@@ -171,12 +333,14 @@ top: 18px;left: 32px;
     -moz-border-radius: 150px 0 0 0;
     border-radius: 150px 0 0 0;
 }
-article::first-letter {
-    font-size: 500%;
-    color:#0984e3;
+#row{
+border:0;
+margin: auto;
+    width: 80%;
+    padding: 10px;
+background-color: #fbfbfb;
+border-color: #fbfbfb;
 }
-
-
 .navbar-default {
 border:0;
 background-color: #fbfbfb;
@@ -185,9 +349,13 @@ border-bottom-color:black;
 }
 #wpis {
 border:1px;
-padding:50px 15px 15px 15px;
+padding:50px 25px 25px 25px;
 }
-
+td {
+font-weight: bold;
+color:#3498db;
+ font-size: 18px;
+}
 .shot {
 opacity: 0.7;
  position: absolute;
@@ -203,72 +371,115 @@ opacity: 0.7;
     -webkit-border-radius:75px;
     -moz-border-radius:75px;
 }
-.highlight{
-background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
-}
-.col-centered{
-    float: none;
-    margin: 0 auto;
-}
-
 </style>
 
 <body>
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=602628593213678&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=602628593213678&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id="row">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-left" href="#"><img src="logo.png"></img></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
+<li class="active"><a href="#">Blog</a></li>
+      <li><a href="index.html">xG - wyjaśnienie</a></li>
+      <li><a href="#">Mecze</a></li>
+<li><a href="#">Drużyny</a></li>
+      <li><a href="#">Indywidualne</a></li>
+      <li><a href="#">O mnie</a></li>
+      <li><a href="#">Kontakt</a></li>
 
-<div id="block">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <a class="navbar-left" href="#"><img src="logo.png"></a>
+    </ul>
+  </div>
+</nav>
+<div id = "wpis">
+
+<article style="padding: 50px;">
+
+        <div id="main">
+                <div id="div1">
+                        <img src="map.jpg" width="450px" height="300px"></img>
+                        <p id="s0" class="shot" style="top: 95.66327251024305px;left: 33.66327251024305px; width: 4.673454979513911px;height:4.673454979513911px;"></p>
+                        <p id="s1" class="shot" style="top: 130.8436639996534px;left: 96.84366399965337px; width: 4.312672000693242px;height:4.312672000693242px;"></p>
+                        <p id="s2" class="shot" style="top: 206.1938268213147px;left: 50.19382682131471px; width: 7.61234635737059px;height:7.61234635737059px;"></p>
+                        <p id="s3" class="shot" style="top: 112.88595207681112px;left: 90.88595207681112px; width: 4.228095846377761px;height:4.228095846377761px;"></p>
+                        <p id="s4" class="shot" style="top: 97.8593811064059px;left: 79.8593811064059px; width: 4.281237787188181px;height:4.281237787188181px;"></p>
+                        <p id="s5" class="shot" style="top: 142.6908596627463px;left: 375.69085966274633px; width: 6.618280674507382px;height:6.618280674507382px;"></p>
+                        <p id="s6" class="shot" style="top: 125.77433538019636px;left: 60.77433538019636px; width: 10.45132923960728px;height:10.45132923960728px;"></p>
+                        <p id="s7" class="goal" style="top: 136.25px;left: 45.25px; width: 25.5px;height:25.5px;"></p>
+                        <p id="s8" class="shot" style="top: 158.67109751723504px;left: 403.67109751723507px; width: 10.657804965529907px;height:10.657804965529907px;"></p>
+                        <p id="s9" class="shot" style="top: 134.10757598173095px;left: 405.107575981731px; width: 7.784848036538093px;height:7.784848036538093px;"></p>
+                        <p id="s10" class="shot" style="top: 106.29373432953037px;left: 314.29373432953037px; width: 3.412531340939274px;height:3.412531340939274px;"></p>
+                        <p id="s11" class="shot" style="top: 154.9057029929727px;left: 346.9057029929727px; width: 4.188594014054593px;height:4.188594014054593px;"></p>
+                        <p id="s12" class="shot" style="top: 191.6877069334995px;left: 71.6877069334995px; width: 4.624586133000993px;height:4.624586133000993px;"></p>
+                        <p id="s13" class="shot" style="top: 192.56544091463192px;left: 62.56544091463193px; width: 4.869118170736149px;height:4.869118170736149px;"></p>
+                        <p id="s14" class="shot" style="top: 203.87375374197848px;left: 372.8737537419785px; width: 4.252492516043075px;height:4.252492516043075px;"></p>
+                        <p id="s15" class="shot" style="top: 137.53234804687392px;left: 377.5323480468739px; width: 4.935303906252166px;height:4.935303906252166px;"></p>
+                        <p id="s16" class="shot" style="top: 177.9956427501017px;left: 400.9956427501017px; width: 6.008714499796614px;height:6.008714499796614px;"></p>
+                        <p id="s17" class="shot" style="top: 128.59685711406587px;left: 376.59685711406587px; width: 4.806285771868248px;height:4.806285771868248px;"></p>
+                        <p id="s18" class="shot" style="top: 198.07081453065658px;left: 24.070814530656577px; width: 3.8583709386868468px;height:3.8583709386868468px;"></p>
+                </div>
+            <div id="div2">
+                <div id ="div3" class="name"></div>
+                <div id ="div3" class ="time"></div>
+                <div id ="div3" class = "type"></div>
+                <div id ="div3" class = "val"></div>
             </div>
-            <ul class="nav navbar-nav navbar-right" style="margin-top:10px">
-                <li><a href="explain.html">Blog</a></li>
-                <li class="active"><a href="index.html"><b>xG</b> - wyjaśnienie</a></li>
-                <li><a href="matches.html">Mecze</a></li>
-                <li><a href="#">Drużyny</a></li>
-                <li><a href="#">Indywidualne</a></li>
-                <li><a href="#">O mnie</a></li>
-                <li><a href="#">Kontakt</a></li>
-            </ul>
         </div>
-    </nav>
+        <div id="main2">
+            <div id="div1x">
+                    <img src="map2.jpg" width="300px" height="450px" class="xa"></img>
+                    <p id="s0" class="shot" style="top: 33.66327251024305px;left: 95.66327251024305px; width: 4.673454979513911px;height:4.673454979513911px;"></p>
+<p id="s1" class="shot" style="top: 96.84366399965337px;left: 130.8436639996534px; width: 4.312672000693242px;height:4.312672000693242px;"></p>
+<p id="s2" class="shot" style="top: 50.19382682131471px;left: 206.1938268213147px; width: 7.61234635737059px;height:7.61234635737059px;"></p>
+<p id="s3" class="shot" style="top: 90.88595207681112px;left: 112.88595207681112px; width: 4.228095846377761px;height:4.228095846377761px;"></p>
+<p id="s4" class="shot" style="top: 79.8593811064059px;left: 97.8593811064059px; width: 4.281237787188181px;height:4.281237787188181px;"></p>
+<p id="s5" class="shot" style="top: 375.69085966274633px;left: 142.6908596627463px; width: 6.618280674507382px;height:6.618280674507382px;"></p>
+<p id="s6" class="shot" style="top: 60.77433538019636px;left: 125.77433538019636px; width: 10.45132923960728px;height:10.45132923960728px;"></p>
+<p id="s7" class="goal" style="top: 45.25px;left: 136.25px; width: 25.5px;height:25.5px;"></p>
+<p id="s8" class="shot" style="top: 403.67109751723507px;left: 158.67109751723504px; width: 10.657804965529907px;height:10.657804965529907px;"></p>
+<p id="s9" class="shot" style="top: 405.107575981731px;left: 134.10757598173095px; width: 7.784848036538093px;height:7.784848036538093px;"></p>
+<p id="s10" class="shot" style="top: 314.29373432953037px;left: 106.29373432953037px; width: 3.412531340939274px;height:3.412531340939274px;"></p>
+<p id="s11" class="shot" style="top: 346.9057029929727px;left: 154.9057029929727px; width: 4.188594014054593px;height:4.188594014054593px;"></p>
+<p id="s12" class="shot" style="top: 71.6877069334995px;left: 191.6877069334995px; width: 4.624586133000993px;height:4.624586133000993px;"></p>
+<p id="s13" class="shot" style="top: 62.56544091463193px;left: 192.56544091463192px; width: 4.869118170736149px;height:4.869118170736149px;"></p>
+<p id="s14" class="shot" style="top: 372.8737537419785px;left: 203.87375374197848px; width: 4.252492516043075px;height:4.252492516043075px;"></p>
+<p id="s15" class="shot" style="top: 377.5323480468739px;left: 137.53234804687392px; width: 4.935303906252166px;height:4.935303906252166px;"></p>
+<p id="s16" class="shot" style="top: 400.9956427501017px;left: 177.9956427501017px; width: 6.008714499796614px;height:6.008714499796614px;"></p>
+<p id="s17" class="shot" style="top: 376.59685711406587px;left: 128.59685711406587px; width: 4.806285771868248px;height:4.806285771868248px;"></p>
+<p id="s18" class="shot" style="top: 24.070814530656577px;left: 198.07081453065658px; width: 3.8583709386868468px;height:3.8583709386868468px;"></p>
+            </div>
+        <div id="div2i">
+            <div id ="div3" class="name" style="width: 100px;"></div>
+            <div id ="div3" class ="time" style="width: 45px;"></div>
+            <div id ="div3" class = "type" style="width: 100px;"></div>
+            <div id ="div3" class = "val" style="width: 50px;"></div>
+        </div>
+        </div>
+        
+    <img src="mecz/ok.png" >
+    <img src="mecz/chart.png" width="100%" height="auto">
+    <img src="mecz/prawd.png" width="100%" height="auto">
 
 
 
-    <div id = "wpis">
-
-    <header><h1><b>Legia Warszawa - Śląsk Wrocałw/b></h1></header>
-    <header><h5><i>March 18, 2019</h5></i></header>
-    <header style="padding-bottom:30px;"><h5><i><u>@Michocio</h5></u></i></header>
-
-
-
-
-    <center><img src="tw.png" width="50px" height="50px"></center>
-    <hr>
-    </article>
-
+<center><img src="tw.png" width="50px" height="50px"></img></center>
+<hr>
+</article>
 </div>
-
-
-<div class="fb-comments" data-href="https://michocio.github.io/" data-numposts="5" style="display: table;margin: 0 auto;">
-</div>
+<div class="fb-comments" data-href="https://michocio.github.io/" data-numposts="5" style="display: table;
+  margin: 0 auto;"></div>
 </div>
 </body>
-
-
-
-
-
 
 
 
