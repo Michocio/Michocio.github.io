@@ -1,5 +1,12 @@
 
 
+<style>
+
+</style>
+
+<div id="aaa"></div>
+
+
 <script>
 function mpld3_load_lib(url, callback){
   var s = document.createElement('script');
@@ -8,8 +15,9 @@ function mpld3_load_lib(url, callback){
   s.onreadystatechange = s.onload = callback;
   s.onerror = function(){console.warn("failed to load library " + url);};
   document.getElementsByTagName("head")[0].appendChild(s);
-}
+};
 
+futncion wolaj(){
 if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
    // already loaded: just create the figure
    !function(mpld3){
@@ -365,4 +373,5 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
             })
          });
 }
+};
 </script>
