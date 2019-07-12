@@ -11,9 +11,10 @@
  <link rel="stylesheet" type="text/css" href="style.css">
  <script>
         var client = new XMLHttpRequest();
-  client.open('GET', '/index.html');
+  client.open('GET', '/idnex.html');
   client.onreadystatechange = function() {
     alert(client.responseText);
+    document.getElementById('chart').innerHTML = client.responseText;
   }
   client.send();
     </script>
@@ -74,11 +75,11 @@
     <article>
             <div id = "wykresy">
 
-
+                <div id ="chart"></div>
 
                     <div id = "lista"></div>                    
                     
-                    </div>
+                </div>
 
         <center><img src="tw.png" width="50px" height="50px"></center>
         <hr>
