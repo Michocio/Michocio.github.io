@@ -22,11 +22,12 @@ function openCity(which) {
     x[i].classList.remove('clicked');
   }
   document.getElementById('tab' + which).classList.add('clicked');
-  var x = document.getElementsByTagName("section");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  document.getElementById("content" + which).style.display = "block";
+  document.getElementsByTagName("section").innerHTML= "<div id ='aaa'></div>";
+//   var x = document.getElementsByTagName("section");
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";
+//   }
+//   document.getElementById("content" + which).style.display = "block";
   console.log("alls/" + which + ".js");
   $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
   console.log( data ); // Data returned
