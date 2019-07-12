@@ -14,6 +14,7 @@
   client.open('GET', '/idnex.html');
   client.onreadystatechange = function() {
     document.getElementById('chart').innerHTML = '<div id ="aaa"></div>' + client.responseText;
+    wolaj();
   }
   client.send();
     </script>
