@@ -1,5 +1,5 @@
 
-<script>
+
 function mpld3_load_lib(url, callback){
   var s = document.createElement('script');
   s.src = url;
@@ -9,7 +9,7 @@ function mpld3_load_lib(url, callback){
   document.getElementsByTagName("head")[0].appendChild(s);
 };
 
-function wolaj(){
+
 if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
    // already loaded: just create the figure
    !function(mpld3){
@@ -365,5 +365,5 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
             })
          });
 }
-};
-</script>
+
+
