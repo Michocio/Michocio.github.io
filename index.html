@@ -31,6 +31,7 @@ function openCity(which) {
 //   }
 //   document.getElementById("content" + which).style.display = "block";
 //   console.log("alls/" + which + ".js");
+console.log(mySet.has(which));
 if (mySet.has(which) == false) {
     $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
     //   console.log( data ); // Data returned
