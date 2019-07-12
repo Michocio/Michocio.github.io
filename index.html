@@ -10,19 +10,109 @@
  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
  <link rel="stylesheet" type="text/css" href="style.css">
  <script>
-        $.getScript( "skrypt.js", function( data, textStatus, jqxhr ) {
+
+
+
+function openCity(which) {
+  var i;
+
+  var x =document.getElementsByTagName("li");
+  for (i = 0; i < x.length; i++) {
+      console.log(i);
+    x[i].classList.remove('clicked');
+  }
+  document.getElementById('tab' + which).classList.add('clicked');
+  var x = document.getElementsByTagName("section");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById("content" + which).style.display = "block";
+  $.getScript( "alls/" + which, function( data, textStatus, jqxhr ) {
+  console.log( data ); // Data returned
+  console.log( textStatus ); // Success
+  console.log( jqxhr.status ); // 200
+  console.log( "Load was performed." );
+});
+}
+
+        $.getScript( "alls/1.js", function( data, textStatus, jqxhr ) {
   console.log( data ); // Data returned
   console.log( textStatus ); // Success
   console.log( jqxhr.status ); // 200
   console.log( "Load was performed." );
 });
     </script>
+    <link rel="stylesheet/scss" type="text/css" href="test.scss">
+  
+
+<style>
+    ul{
+        margin:0;
+        display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+    }
+li {
+    position:relative;
+  display: inline-block;
+
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #abc;
+  border: 1px solid transparent;
+}
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #abc;
+}
+li:hover {
+  color: #789;
+  cursor: pointer;
+}
+.clicked {
+  color: #0af;
+  border: 1px solid #abc;
+  border-top: 5px solid #0af;
+  border-bottom: 1px solid #fff;
+}
+
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+
+}
+
+::-webkit-scrollbar
+{
+    cursor:pointer;
+	width: 10px;
+    background-color: #F5F5F5;
+    
+}
+::-webkit-scrollbar-thumb
+{
+
+    cursor: move;
+	background-color: #0ae;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+</style>
 </head>
 
 
 
 
 <body>
+        <button onclick="myFunction()">Click me</button>
 
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -82,6 +172,51 @@
 
         <center><img src="tw.png" width="50px" height="50px"></center>
         <hr>
+
+
+        <main>
+                <ul>
+                        <li id="tab1" class="clicked" onclick="openCity('1')">Piast Gliwice</li>
+                        <li id="tab2" onclick="openCity('2')">Legia Warszawa</li>
+                        <li id="tab3" onclick="openCity('3')">Lechia Gdańsk</li>
+                        <li id="tab4" onclick="openCity('4')">Cracovia</li>
+
+                        <li id="tab5"  onclick="openCity('5')">Jagiellonia Białystok</li>
+                        <li id="tab6" onclick="openCity('6')">Zagłębie Lubin</li>
+                        <li id="tab7" onclick="openCity('7')">Pogoń Szczecin</li>
+                        <li id="tab8" onclick="openCity('8')">Lech Poznań</li>
+
+                        <li id="tab9"  onclick="openCity('9')"> Wisła Kraków</li>
+                        <li id="tab10" onclick="openCity('10')">Korona Kielce</li>
+                        <li id="tab11" onclick="openCity('11')">Górnik Zabrze</li>
+                        <li id="tab12" onclick="openCity('12')">Śląsk Wrocław</li>
+
+                        <li id="tab13"  onclick="openCity('13')"> Arka Gdynia</li>
+                        <li id="tab14" onclick="openCity('14')"> Wisła Płock</li>
+                        <li id="tab15" onclick="openCity('15')">Miedź Legnica</li>
+                        <li id="tab16" onclick="openCity('16')">Zagłębie Sosnowiec</li>
+                        
+                      </ul>
+  
+              
+                <section id="content1" style="display: block;" >
+                </section>
+              
+                <section id="content2">
+
+                </section>
+              
+                <section id="content3">
+
+                </section>
+              
+                <section id="content4">
+
+                </section>
+              
+              </main>
+
+
     </article>
 
 </div>
