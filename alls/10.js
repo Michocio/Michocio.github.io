@@ -1,10 +1,5 @@
 
 
-<style>
-
-</style>
-
-<div id="aaa"></div>
 <script>
 function mpld3_load_lib(url, callback){
   var s = document.createElement('script');
