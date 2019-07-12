@@ -33,9 +33,9 @@ function openCity(which) {
 //   console.log("alls/" + which + ".js");
   $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
 //   console.log( data ); // Data returned
-//   console.log( textStatus ); // Success
-//   console.log( jqxhr.status ); // 200
-//   console.log( "Load was performed." );
+console.log( textStatus ); // Success
+console.log( jqxhr.status ); // 200
+console.log( "Load was performed." );
 });
 }
 
