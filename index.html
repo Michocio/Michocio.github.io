@@ -27,7 +27,7 @@ function openCity(which) {
     x[i].style.display = "none";
   }
   document.getElementById("content" + which).style.display = "block";
-  $.getScript( "alls/" + which, function( data, textStatus, jqxhr ) {
+  $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
   console.log( data ); // Data returned
   console.log( textStatus ); // Success
   console.log( jqxhr.status ); // 200
