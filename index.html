@@ -23,17 +23,18 @@ function openCity(which) {
   }
   document.getElementById('tab' + which).classList.add('clicked');
   document.getElementById("content1").innerHTML= "<div id ='id" + which + "></div>";
+  console.log("<div id ='id" + which + "></div>");
 //   var x = document.getElementsByTagName("section");
 //   for (i = 0; i < x.length; i++) {
 //     x[i].style.display = "none";
 //   }
 //   document.getElementById("content" + which).style.display = "block";
-  console.log("alls/" + which + ".js");
+//   console.log("alls/" + which + ".js");
   $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
-  console.log( data ); // Data returned
-  console.log( textStatus ); // Success
-  console.log( jqxhr.status ); // 200
-  console.log( "Load was performed." );
+//   console.log( data ); // Data returned
+//   console.log( textStatus ); // Success
+//   console.log( jqxhr.status ); // 200
+//   console.log( "Load was performed." );
 });
 }
 
