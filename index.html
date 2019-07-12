@@ -13,8 +13,7 @@
         var client = new XMLHttpRequest();
   client.open('GET', '/idnex.html');
   client.onreadystatechange = function() {
-    alert(client.responseText);
-    document.getElementById('chart').innerHTML = client.responseText;
+    document.getElementById('chart').innerHTML = "<div id ="aaa"></div>" + client.responseText;
   }
   client.send();
     </script>
@@ -75,7 +74,7 @@
     <article>
             <div id = "wykresy">
 
-                <div id ="chart"><div id ="aaa"></div> </div>
+                <div id ="chart"></div>
 
                     <div id = "lista"></div>                    
                     
