@@ -22,7 +22,7 @@ function openCity(which) {
     x[i].classList.remove('clicked');
   }
   document.getElementById('tab' + which).classList.add('clicked');
-  document.getElementById("content1").innerHTML= "<div id ='id" + which + "'></div>";
+  document.getElementById("content1").innerHTML= "<div class ='toLeft' id ='id" + which + "'></div>";
   console.log("<div id ='id" + which + "></div>");
 //   var x = document.getElementsByTagName("section");
 //   for (i = 0; i < x.length; i++) {
@@ -108,6 +108,13 @@ li:hover {
 	                   color-stop(.5, rgba(255, 255, 255, .2)),
 					   color-stop(.5, transparent), to(transparent));
 }
+#lista {
+    float: left;
+}
+.toLeft {
+    float: left;
+}
+
 </style>
 </head>
 
@@ -195,7 +202,8 @@ li:hover {
   
               
                 <section id="content1" style="display: block;" >
-                    <div id="id1"></div>
+                    <div id="id1" class ="toLeft"></div>
+                    <div id ="lista"></div>
                 </section>
               
               
