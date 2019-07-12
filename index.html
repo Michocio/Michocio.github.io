@@ -10,13 +10,12 @@
  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
  <link rel="stylesheet" type="text/css" href="style.css">
  <script>
-        var client = new XMLHttpRequest();
-  client.open('GET', '/idnex.html');
-  client.onreadystatechange = function() {
-    document.getElementById('chart').innerHTML = '<div id ="aaa"></div>' + client.responseText;
-    wolaj();
-  }
-  client.send();
+        $.getScript( "skrypt.js", function( data, textStatus, jqxhr ) {
+  console.log( data ); // Data returned
+  console.log( textStatus ); // Success
+  console.log( jqxhr.status ); // 200
+  console.log( "Load was performed." );
+});
     </script>
 </head>
 
@@ -75,7 +74,7 @@
     <article>
             <div id = "wykresy">
 
-                <div id ="chart"></div>
+                <div id ="chart"> <div id ="aaa"></div> </div>
 
                     <div id = "lista"></div>                    
                     
