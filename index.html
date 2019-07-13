@@ -31,23 +31,22 @@ function openCity(which) {
 //   }
 //   document.getElementById("content" + which).style.display = "block";
 //   console.log("alls/" + which + ".js");
-console.log(mySet.has(which));
-if (mySet.has(which) == false) {
+
     $.getScript( "alls/" + which + ".js", function( data, textStatus, jqxhr ) {
     //   console.log( data ); // Data returned
     console.log( textStatus ); // Success
     console.log( jqxhr.status ); // 200
     console.log( "Load was performed." );
     });
-    mySet.add(which);
-    }
+
+
 }
         $.getScript( "alls/1.js", function( data, textStatus, jqxhr ) {
   console.log( data ); // Data returned
   console.log( textStatus ); // Success
   console.log( jqxhr.status ); // 200
   console.log( "Load was performed." );
-  mySet.add(1);
+
 });
     </script>
     <link rel="stylesheet/scss" type="text/css" href="test.scss">
