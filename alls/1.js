@@ -28,11 +28,9 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
     var table = d3.select("#lista");//tooltip.append('table').attr("class", "sortable");
     var table2 = d3.select("#lista2");//tooltip.append('table').attr("class", "sortable");
 
-    
-                
-    function ClickInfo(fig, props){
-        mpld3.Plugin.call(this, fig, props);
         
+    function ClickInfo(fig, props){
+        mpld3.Plugin.call(this, fig, props);     
     };
 
     ClickInfo.prototype.draw = function(){
@@ -43,8 +41,7 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
         var bins = this.props.vals;
         var alls = this.props.alls;
                                           var tekst = "";
-                                  tekst+="<thead><tr><th>Zawodnik</th><th>Minuty</th><th>Instat index</th></tr></thead>";
-                                    
+                                  tekst+="<thead><tr><th>Zawodnik</th><th>Minuty</th><th>Instat index</th></tr></thead>";       
                                 tekst+="<tbody>";
                                 var licz= 0;
                                   for (j in alls) {
@@ -64,11 +61,10 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
         this.props.ids.forEach(function(id, i) {
            
             var obj = mpld3.get_element(id);
-                 console.log(id, i, obj);
+            console.log(id, i, obj, glob);
             
             
-            obj.elements().on("mousedown",
-                              function(d){
+            obj.elements().on("mousedown", function(d){
                                   console.log("click", id,i,d);
                                   table.html("");
                                   var tekst = "";
@@ -102,7 +98,9 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
                                 }
                                 table.html(tekst);
                               });
-                              });
+                              
+                            
+                            });
     }
     
     mpld3.register_plugin("clickinfo", ClickInfo);
