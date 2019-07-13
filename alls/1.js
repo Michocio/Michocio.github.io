@@ -154,6 +154,7 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
            
             var obj = mpld3.get_element(id);
                  console.log(id, i, obj);
+                 console.log(id, i, obj, "gloabl", glob);
             
             
             obj.elements().on("mousedown",
@@ -254,7 +255,7 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
            
             var obj = mpld3.get_element(id);
                  console.log(id, i, obj);
-            
+                 console.log(id, i, obj, "gloabl", glob);
             
             obj.elements().on("mousedown",
                               function(d){
