@@ -1,11 +1,6 @@
 
 
-<style>
 
-</style>
-
-<div id="id1"></div>
-<script>
 function mpld3_load_lib(url, callback){
   var s = document.createElement('script');
   s.src = url;
@@ -592,4 +587,4 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
             })
          });
 }
-</script>
+
