@@ -12,7 +12,7 @@
  <link rel="stylesheet" type="text/css" href="style.css">
  <script>
 
-var glob = 7;
+var glob = [];
 var mySet = new Set();
 function openCity(which) {
   var i;
@@ -46,6 +46,7 @@ function openCity(which) {
   console.log( textStatus ); // Success
   console.log( jqxhr.status ); // 200
   console.log( "Load was performed." );
+  mySet.add(1);
 
 });
     </script>
