@@ -59,7 +59,7 @@ if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
 
 
         this.props.ids.forEach(function(id, i) {
-           
+            console.log(id, i, obj, "xxxxxxxxxxxxgloabl", glob);
             var obj = mpld3.get_element(id);
             console.log(id, i, obj, "gloabl", glob);
             
